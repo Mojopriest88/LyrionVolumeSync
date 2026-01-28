@@ -1,4 +1,4 @@
-<?xml version="0.1.1" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <extensions>
   <plugins>
     <plugin name="LyrionVolumeSync" version="0.1.1" minTarget="8.0" maxTarget="*">
