@@ -1,0 +1,15 @@
+<?xml version='1.0' standalone='yes'?>
+<plugin name="LyrionVolumeSync" version="0.1.0">
+	<targetApplication>
+		<id>Lyrion Music Server</id>
+		<minVersion>7.0</minVersion>
+		<maxVersion>*</maxVersion>
+	</targetApplication>
+	<title>Lyrion Volume Sync</title>
+	<name>LyrionVolumeSync</name>
+	<description>Synchronizes volume between Lyrion players without external polling.</description>
+	<creator>Mojopriest88</creator>
+	<email>mojopriest88@gmail.com</email>
+	<module>Plugins::LyrionVolumeSync::Plugin</module>
+	<url>https://github.com/Mojopriest88/LyrionVolumeSync</url>
+</plugin>

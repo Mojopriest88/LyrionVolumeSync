@@ -1,0 +1,61 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Create plugin directory structure
+        run: |
+          mkdir -p build/LyrionVolumeSync
+          cp -r lib build/LyrionVolumeSync/
+          cp strings.txt build/LyrionVolumeSync/
+          cp install.xml build/LyrionVolumeSync/
+          cp -r HTML build/LyrionVolumeSync/
+          cp LICENSE build/LyrionVolumeSync/
+          ls -la build/LyrionVolumeSync/
+      
+      - name: Create zip archive
+        run: |
+          cd build
+          zip -r ../LyrionVolumeSync.zip LyrionVolumeSync/
+          ls -lh ../LyrionVolumeSync.zip
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: LyrionVolumeSync.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update repo.xml
+        run: |
+          # Checkout main branch to avoid detached HEAD
+          git checkout main
+          
+          # Calculate SHA1
+          SHA=$(sha1sum LyrionVolumeSync.zip | awk '{print $1}')
+          VERSION=${GITHUB_REF#refs/tags/v}
+          
+          # Update repo.xml using sed
+          sed -i "s/version=\"[^\"]*\"/version=\"$VERSION\"/" repo.xml
+          sed -i "s|<sha>.*</sha>|<sha>$SHA</sha>|" repo.xml || sed -i "s|</plugin>|<sha>$SHA</sha>\n    </plugin>|" repo.xml
+          sed -i "s|/v[0-9.]*/LyrionVolumeSync.zip|/v$VERSION/LyrionVolumeSync.zip|" repo.xml
+          
+          # Commit and Push
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add repo.xml
+          git commit -m "Update repo.xml for version $VERSION"
+          git push origin main

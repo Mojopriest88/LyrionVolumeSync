@@ -1,0 +1,17 @@
+PLUGIN_LYRIONVOLUMESYNC
+	EN	Lyrion Volume Sync
+
+PLUGIN_LYRIONVOLUMESYNC_DESCRIPTION
+	EN	Synchronizes volume between Lyrion players. Select a source player for each target player - when the source's volume changes, the target will follow.
+
+PLUGIN_LYRIONVOLUMESYNC_PLAYER
+	EN	Player
+
+PLUGIN_LYRIONVOLUMESYNC_ENABLED
+	EN	Enabled
+
+PLUGIN_LYRIONVOLUMESYNC_SOURCE
+	EN	Source Player
+
+PLUGIN_LYRIONVOLUMESYNC_BIDIRECTIONAL
+	EN	Bidirectional
