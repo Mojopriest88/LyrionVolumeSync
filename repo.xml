@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensions>
   <plugins>
-    <plugin name="LyrionVolumeSync" version="0.1.1" minTarget="8.0" maxTarget="*">
+    <plugin name="LyrionVolumeSync" version="0.1.2" minTarget="8.0" maxTarget="*">
       <title lang="EN">Lyrion Volume Sync</title>
       <desc lang="EN">Synchronizes volume between Lyrion players without external polling.</desc>
-      <url>https://github.com/Mojopriest88/LyrionVolumeSync/releases/download/v0.1.1/LyrionVolumeSync.zip</url>
+      <url>https://github.com/Mojopriest88/LyrionVolumeSync/releases/download/v0.1.2/LyrionVolumeSync.zip</url>
       <category>hardware</category>
       <creator>Mojopriest88</creator>
       <link>https://github.com/Mojopriest88/LyrionVolumeSync</link>
+      <sha>708ca024975008fa9d8030ee7e930d0b43eb7172</sha>
     </plugin>
   </plugins>
 </extensions>
